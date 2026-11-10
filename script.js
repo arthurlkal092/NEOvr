@@ -676,7 +676,7 @@ $("openRefund").addEventListener("click", async () => {
     return;
   }
 
-  // 5) Faltam convites → mostra link + barra + explica
+  // 5) Faltam convites → mostra link + barra + explica (com a regra dos R$ 25)
   $("refundConvites").hidden = false;
 
   const link = meuRefCode
@@ -688,8 +688,8 @@ $("openRefund").addEventListener("click", async () => {
 
   setRefundMessage(
     livre > 0
-      ? `Você pode sacar até ${brl(livre)} sem convidar (cota básica). Para sacar ${brl(pago)}, faltam ${minInd - indicados} indicação(ões).`
-      : `Faltam ${minInd - indicados} indicação(ões) com depósito aprovado para liberar o saque.`,
+      ? `Você pode sacar até ${brl(livre)} sem convidar (cota básica). Para sacar ${brl(pago)}, faltam ${minInd - indicados} indicação(ões) que compraram a cota de R$ 25 ou maior.`
+      : `Faltam ${minInd - indicados} indicação(ões) com cota de R$ 25 ou maior aprovada para liberar o saque.`,
     true
   );
 });
