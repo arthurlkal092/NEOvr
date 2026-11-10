@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b18">
+  <meta name="description" content="NEOVR — Experiências imersivas em realidade virtual.">
+
+  <title>NEOVR — Experiências que movem o futuro</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<style>
+:root {
+  --bg: #080b18;
+  --panel: #11162a;
+  --text: #f4f6ff;
+  --muted: #a6afc9;
+  --purple: #9b70ff;
+  --cyan: #62e7e5;
+  --green: #7cf0bd;
+  --line: rgba(255,255,255,.11);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 80% 0%, rgba(100,68,209,.2), transparent 38%),
+    var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+.wrap {
+  width: min(1120px, calc(100% - 40px));
+  margin: auto;
+}
+
+/* NAVEGAÇÃO */
+
+.nav {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  font-weight: 850;
+  letter-spacing: .06em;
+  font-size: 1.3rem;
+}
+
+.brand b {
+  color: var(--cyan);
+}
+
+.links {
+  display: flex;
+  gap: 28px;
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+.links a:hover {
+  color: white;
+}
+
+.nav-cta,
+.btn {
+  border: 0;
+  border-radius: 12px;
+  padding: 12px 18px;
+  background: linear-gradient(110deg, var(--purple), #6c8dff);
+  color: white;
+  font-weight: 750;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: .2s;
+}
+
+.btn:hover,
+.nav-cta:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+/* HERO */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.08fr .92fr;
+  gap: 44px;
+  align-items: center;
+  padding: 82px 0 72px;
+  min-height: 540px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  gap: 9px;
+  align-items: center;
+  color: var(--cyan);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 14px var(--green);
+}
+
+h1 {
+  font-size: clamp(2.6rem, 5.5vw, 4.55rem);
+  line-height: 1.04;
+  letter-spacing: -.055em;
+  margin: 18px 0;
+}
+
+.gradient {
+  background: linear-gradient(100deg, #fff, #a899ff 54%, #69e9e3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.lead {
+  color: var(--muted);
+  font-size: 1.07rem;
+  max-width: 590px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 28px 0 25px;
+}
+
+.btn.secondary {
+  background: transparent;
+  border: 1px solid var(--line);
+  box-shadow: none;
+  color: #e9eaff;
+}
+
+.micro {
+  font-size: .78rem;
+  color: #8790ab;
+}
+
+/* ILUSTRAÇÃO */
+
+.visual {
+  height: 390px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 52% 46%, rgba(95,232,228,.15), transparent 38%),
+    linear-gradient(145deg, #151a32, #0b1021);
+  box-shadow: 0 25px 80px rgba(0,0,0,.25);
+}
+
+.orb {
+  position: absolute;
+  width: 245px;
+  height: 245px;
+  border-radius: 50%;
+  border: 1px solid rgba(98,231,229,.35);
+  box-shadow: 0 0 70px rgba(98,231,229,.16);
+}
+
+.orb::before,
+.orb::after {
+  content: "";
+  position: absolute;
+  inset: 22px;
+  border: 1px solid rgba(155,112,255,.4);
+  border-radius: 50%;
+  transform: rotateX(66deg) rotateZ(25deg);
+}
+
+.orb::after {
+  transform: rotateX(66deg) rotateZ(-35deg);
+}
+
+.headset {
+  position: relative;
+  z-index: 1;
+  font-size: 6rem;
+  filter: drop-shadow(0 0 28px rgba(98,231,229,.55));
+}
+
+.float-tag {
+  position: absolute;
+  padding: 10px 13px;
+  border: 1px solid var(--line);
+  background: rgba(15,20,39,.82);
+  border-radius: 12px;
+  font-size: .8rem;
+}
+
+.tag1 {
+  top: 52px;
+  left: 24px;
+}
+
+.tag2 {
+  right: 22px;
+  bottom: 58px;
+}
+
+/* ESTATÍSTICAS */
+
+.statrow {
+  display: flex;
+  gap: 34px;
+  margin-top: 25px;
+}
+
+.stat strong {
+  display: block;
+  font-size: 1.15rem;
+}
+
+.stat span {
+  font-size: .75rem;
+  color: var(--muted);
+}
+
+/* SEÇÕES */
+
+section {
+  padding: 76px 0;
+}
+
+.section-head {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 38px;
+}
+
+.kicker {
+  color: var(--cyan);
+  text-transform: uppercase;
+  letter-spacing: .13em;
+  font-size: .75rem;
+  font-weight: 800;
+}
+
+.section-head h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -.04em;
+  line-height: 1.12;
+  margin: 10px 0;
+}
+
+.section-head p {
+  color: var(--muted);
+}
+
+/* CARDS */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.card {
+  background: linear-gradient(145deg, #181f3a, #0f1427);
+  border: 1px solid var(--line);
+  padding: 25px;
+  border-radius: 19px;
+}
+
+.icon {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  background: rgba(155,112,255,.13);
+  border-radius: 13px;
+  font-size: 1.35rem;
+}
+
+.card h3 {
+  margin: 16px 0 7px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: .92rem;
+}
+
+/* COTAS */
+
+.invest {
+  background: linear-gradient(180deg, transparent, rgba(74,77,155,.1), transparent);
+}
+
+.plans {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.plan {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.plan-photo {
+  display: block;
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 13px;
+  margin-bottom: 18px;
+  border: 1px solid var(--line);
+  background: #151c35;
+}
+
+.plan.featured {
+  border-color: rgba(155,112,255,.75);
+  box-shadow: 0 0 36px rgba(126,94,255,.13);
+  transform: translateY(-7px);
+}
+
+.badge {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  background: #172b38;
+  color: var(--cyan);
+  font-size: .68rem;
+  font-weight: 800;
+  padding: 5px 9px;
+  border-radius: 99px;
+  z-index: 2;
+}
+
+.plan-name {
+  font-size: .88rem;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.price {
+  font-size: 2.65rem;
+  font-weight: 850;
+  letter-spacing: -.05em;
+  margin: 8px 0 2px;
+}
+
+.price small {
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+.term {
+  color: var(--muted);
+  font-size: .82rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 19px;
+}
+
+.plan ul {
+  padding: 0;
+  list-style: none;
+  color: #d5d9ec;
+  font-size: .88rem;
+  flex: 1;
+  margin: 19px 0;
+}
+
+.plan li {
+  margin: 10px 0;
+}
+
+.plan li::before {
+  content: "✓";
+  color: var(--green);
+  font-weight: 900;
+  margin-right: 9px;
+}
+
+.plan .btn {
+  width: 100%;
+}
+
+.notice {
+  margin: 24px auto 0;
+  max-width: 900px;
+  background: rgba(255,190,92,.08);
+  border: 1px solid rgba(255,190,92,.23);
+  border-radius: 14px;
+  padding: 16px 18px;
+  color: #e8d7b8;
+  font-size: .82rem;
+}
+
+/* ETAPAS */
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.step {
+  padding: 22px;
+  border-left: 1px solid rgba(98,231,229,.35);
+}
+
+.num {
+  color: var(--cyan);
+  font-weight: 850;
+  font-size: .8rem;
+}
+
+.step p {
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+/* FAQ */
+
+.faq {
+  max-width: 800px;
+  margin: auto;
+}
+
+.faq details {
+  border-bottom: 1px solid var(--line);
+  padding: 17px 2px;
+}
+
+.faq summary {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.faq details p {
+  color: var(--muted);
+  font-size: .91rem;
+}
+
+/* CONTATO */
+
+.contact {
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 34px;
+  background: linear-gradient(120deg, rgba(117,87,211,.15), rgba(73,193,196,.08));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.contact p {
+  color: var(--muted);
+}
+
+/* RODAPÉ */
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 28px 0;
+  color: #8891a9;
+  font-size: .78rem;
+}
+
+.foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+
+/* MODAL */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(3,5,14,.78);
+  backdrop-filter: blur(8px);
+  display: none;
+  place-items: center;
+  padding: 20px;
+  z-index: 10;
+}
+
+.modal.open {
+  display: grid;
+}
+
+.dialog {
+  width: min(480px, 100%);
+  background: #11172b;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 27px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 17px;
+  top: 12px;
+  background: none;
+  border: 0;
+  color: #aeb6cf;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.dialog p {
+  color: var(--muted);
+  font-size: .89rem;
+}
+
+.formrow {
+  margin: 14px 0;
+}
+
+.formrow label {
+  display: block;
+  font-size: .83rem;
+  margin-bottom: 6px;
+}
+
+.formrow input,
+.formrow select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  background: #090e1e;
+  color: white;
+  border: 1px solid var(--line);
+  font: inherit;
+}
+
+.dialog .btn {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.legal-small {
+  font-size: .72rem !important;
+}
+
+.toast {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translate(-50%,20px);
+  opacity: 0;
+  pointer-events: none;
+  background: #152438;
+  border: 1px solid rgba(124,240,189,.35);
+  color: #c9ffe6;
+  padding: 12px 17px;
+  border-radius: 12px;
+  z-index: 20;
+  transition: .25s;
+  font-size: .88rem;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%,0);
+}
+
+/* RESPONSIVIDADE */
+
+@media(max-width:800px) {
+  .links {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 55px 0 40px;
+    gap: 25px;
+  }
+
+  .visual {
+    height: 310px;
+  }
+
+  .cards,
+  .plans,
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .plan.featured {
+    transform: none;
+  }
+
+  .contact {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media(max-width:480px) {
+  .wrap {
+    width: calc(100% - 30px);
+  }
+
+  .hero {
+    padding-top: 42px;
+  }
+
+  .visual {
+    height: 270px;
+  }
+
+  .statrow {
+    gap: 14px;
+  }
+
+  .stat strong {
+    font-size: .95rem;
+  }
+
+  .foot {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="wrap nav">
+  <a class="brand" href="#inicio">NEO<b>VR</b></a>
+
+  <nav class="links">
+    <a href="#projeto">O projeto</a>
+    <a href="#como-funciona">Como funciona</a>
+    <a href="#cotas">Cotas</a>
+    <a href="#duvidas">Dúvidas</a>
+  </nav>
+
+<div style="display:flex; gap:10px; align-items:center;">
+  <button class="btn secondary" id="openLogin">Entrar</button>
+  <button class="btn secondary" id="openRefund" hidden>Saque</button>
+  <a class="nav-cta" href="#cotas">Ver cotas ↗</a>
+</div>
+</header>
+
+<main>
+
+<!-- INÍCIO -->
+
+<section class="wrap hero" id="inicio">
+
+  <div>
+    <div class="eyebrow">
+      <i class="dot"></i>
+      Tecnologia imersiva, novas possibilidades
+    </div>
+
+    <h1>
+      Entre no futuro.<br>
+      <span class="gradient">Viva experiências.</span>
+    </h1>
+
+    <p class="lead">
+      Um projeto dedicado a levar a realidade virtual para eventos,
+      empresas e espaços de entretenimento — com equipamentos
+      imersivos e experiências interativas.
+    </p>
+
+    <div class="hero-actions">
+      <a class="btn" href="#cotas">Conheça as cotas →</a>
+      <a class="btn secondary" href="#projeto">Explorar o projeto</a>
+    </div>
+
+    <div class="micro">
+    
+    </div>
+
+    <div class="statrow">
+      <div class="stat">
+        <strong>Experiências VR</strong>
+        <span>Entretenimento e simulações</span>
+      </div>
+
+      <div class="stat">
+        <strong>Uso comercial</strong>
+        <span>Eventos e empresas</span>
+      </div>
+
+      <div class="stat">
+        <strong>Expansão gradual</strong>
+        <span>Estrutura escalável</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="visual">
+  <div class="orb"></div>
+  <img
+    class="hero-photo"
+    src="./images/hero.jpg"
+    alt="Experiência NEOVR"
+    loading="eager"
+    onerror="this.onerror=null;this.src='https://placehold.co/400x400/151a32/62e7e5?text=NEOVR';"
+  >
+  <div class="float-tag tag1">✦ Imersão interativa</div>
+  <div class="float-tag tag2">◉ Tecnologia VR</div>
+</div>
+
+</section>
+
+<!-- PROJETO -->
+
+<section id="projeto">
+<div class="wrap">
+
+  <div class="section-head">
+    <div class="kicker">A proposta</div>
+    <h2>Mais do que equipamentos.<br>Um mundo de experiências.</h2>
+    <p>
+      O capital do projeto é direcionado à estrutura necessária
+      para criar experiências digitais que conectam pessoas,
+      marcas e tecnologia.
+    </p>
+  </div>
+
+  <div class="cards">
+
+    <article class="card">
+      <div class="icon">🥽</div>
+      <h3>Equipamentos</h3>
+      <p>
+        Aquisição de óculos VR, controles, sensores e acessórios
+        para experiências imersivas.
+      </p>
+    </article>
+
+    <article class="card">
+      <div class="icon">⚡</div>
+      <h3>Ativações e serviços</h3>
+      <p>
+        Possibilidades de uso em entretenimento, simulações
+        e locação para eventos e negócios.
+      </p>
+    </article>
+
+    <article class="card">
+      <div class="icon">↗️</div>
+      <h3>Desenvolvimento</h3>
+      <p>
+        Preparação, manutenção e expansão gradual da estrutura
+        conforme as oportunidades do projeto.
+      </p>
+    </article>
+
+  </div>
+</div>
+</section>
+
+<!-- COTAS -->
+
+<section class="invest" id="cotas">
+<div class="wrap">
+
+  <div class="section-head">
+    <div class="kicker">Participe do projeto</div>
+    <h2>Escolha sua cota</h2>
+    <p>
+      Escolha o valor, pague por Pix e envie o comprovante.
+      Após a confirmação, o crédito aparece na sua conta.
+    </p>
+  </div>
+
+  <div class="plans">
+
+<!-- COTA 5 -->
+
+<article class="plan">
+
+  <img
+    class="plan-photo"
+    src="./images/imagescota-5.jpg"
+    alt="Imagem da Cota Básica"
+    loading="lazy"
+    onerror="this.onerror=null;this.src='https://placehold.co/600x400/11162a/62e7e5?text=Cota+Basica';"
+  >
+
+  <div class="plan-name">Cota Básica</div>
+
+  <div class="price">
+    R$ 5<small>,00</small>
+  </div>
+
+  <div class="term">Pagamento via Pix</div>
+
+  <ul>
+    <li>1 cota do projeto</li>
+    <li>Valor a receber: 10,00</li>
+  </ul>
+
+  <button class="btn buy"
+    data-plan="Cota Básica"
+    data-value="R$ 5,00">
+    Comprar cota
+  </button>
+
+</article>
+
+    <!-- COTA 25 -->
+
+    <article class="plan">
+
+      <img
+        class="plan-photo"
+        src="./images/imagescota-25.jpg"
+        alt="Imagem da Cota Inicial"
+        loading="lazy"
+        onerror="this.onerror=null;this.src='https://placehold.co/600x400/11162a/62e7e5?text=Cota+Inicial';"
+      >
+
+      <div class="plan-name">Cota Inicial</div>
+
+      <div class="price">
+        R$ 25<small>,00</small>
+      </div>
+
+      <div class="term">Pagamento via Pix</div>
+
+      <ul>
+        <li>1 cota do projeto</li>
+        <li>Valor a receber: 50,00</li>
+      </ul>
+
+      <button class="btn buy"
+        data-plan="Cota Inicial"
+        data-value="R$ 25,00">
+        Comprar cota
+      </button>
+
+    </article>
+
+    <!-- COTA 50 -->
+
+    <article class="plan featured">
+
+      <span class="badge">OPÇÃO POPULAR</span>
+
+      <img
+        class="plan-photo"
+        src="./images/imagescota-50.jpg"
+        alt="Imagem da Cota Intermediária"
+        loading="lazy"
+        onerror="this.onerror=null;this.src='https://placehold.co/600x400/11162a/62e7e5?text=Cota+Intermediaria';"
+      >
+
+      <div class="plan-name">Cota Intermediária</div>
+
+      <div class="price">
+        R$ 50<small>,00</small>
+      </div>
+
+      <div class="term">Pagamento via Pix</div>
+
+      <ul>
+        <li>1 cota do projeto</li>
+        <li>Valor a receber: 100,00</li>
+      </ul>
+
+      <button class="btn buy"
+        data-plan="Cota Intermediária"
+        data-value="R$ 50,00">
+        Comprar cota
+      </button>
+
+    </article>
+
+    <!-- COTA 100 -->
+
+    <article class="plan">
+
+      <img
+        class="plan-photo"
+        src="./images/imagescota-100.jpg"
+        alt="Imagem da Cota Avançada"
+        loading="lazy"
+        onerror="this.onerror=null;this.src='https://placehold.co/600x400/11162a/62e7e5?text=Cota+Avancada';"
+      >
+
+      <div class="plan-name">Cota Avançada</div>
+
+      <div class="price">
+        R$ 100<small>,00</small>
+      </div>
+
+      <div class="term">Pagamento via Pix</div>
+
+      <ul>
+        <li>1 cota do projeto</li>
+        <li>Valor a receber: 200,00</li>
+      </ul>
+
+      <button class="btn buy"
+        data-plan="Cota Avançada"
+        data-value="R$ 100,00">
+        Comprar cota
+      </button>
+
+    </article>
+
+  </div>
+
+  <div class="notice">
+    <strong>Importante: é possivle comprar apenas uma cota por vez.
+  </div>
+
+</div>
+</section>
+
+<!-- COMO FUNCIONA -->
+
+<section id="como-funciona">
+<div class="wrap">
+
+  <div class="section-head">
+    <div class="kicker">Jornada do participante</div>
+    <h2>Clareza em cada etapa</h2>
+    <p>
+      Antes de participar, confira os riscos e os termos completos do projeto.
+    </p>
+  </div>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="num">01 — CONHEÇA</div>
+      <h3>Entenda a proposta</h3>
+      <p>
+        Veja como os recursos seriam destinados e quais
+        serviços o projeto pretende oferecer.
+      </p>
+    </div>
+
+    <div class="step">
+      <div class="num">02 — AVALIE</div>
+      <h3>Leia as condições</h3>
+      <p>
+        Confirme por escrito prazos e regras de resgate.
+      </p>
+    </div>
+
+    <div class="step">
+      <div class="num">03 — DECIDA</div>
+      <h3>Participe com informação</h3>
+      <p>
+        Manifeste interesse somente após receber e compreender.
+      </p>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- DÚVIDAS -->
+
+<section id="duvidas">
+<div class="wrap">
+
+  <div class="section-head">
+    <div class="kicker">Perguntas frequentes</div>
+    <h2>Dúvidas comuns</h2>
+  </div>
+
+  <div class="faq">
+
+    <details>
+      <summary>O que financia o projeto?</summary>
+      <p>
+        A proposta prevê a compra, preparação e manutenção
+        de óculos VR, controles, sensores e demais recursos.
+      </p>
+    </details>
+
+    <details>
+      <summary>Como o projeto pretende gerar receita?</summary>
+      <p>
+        Entre as possibilidades estão atividades de entretenimento,
+        simulações virtuais e serviços de locação para eventos,
+        empresas e estabelecimentos comerciais.
+      </p>
+    </details>
+
+    <details>
+      <summary>Quando meus créditos são liberados?</summary>
+      <p>
+        Depois de pagar o Pix e enviar o comprovante, nossa equipe confere o
+        pagamento e libera o saldo na sua conta assim que for confirmado.
+      </p>
+    </details>
+
+    <details>
+      <summary>Por que não consigo comprar de novo?</summary>
+      <p>
+        Só é possível ter uma cota por vez. A compra precisa ser aprovada e,
+        depois de 48 horas, você solicita o saque do valor. Só então uma nova
+        cota é liberada. Na sua conta você vê o status da próxima compra.
+      </p>
+    </details>
+
+    <details>
+      <summary>Este site aceita quais tipos pagamentos?</summary>
+      <p>
+        No momento esta sendo aceito apenas pix.
+      </p>
+    </details>
+
+  </div>
+</div>
+</section>
+
+<!-- CONTATO -->
+
+<section class="wrap">
+
+  <div class="contact">
+
+    <div>
+      <div class="kicker">Quer saber mais?</div>
+      <h2>Termos</h2>
+      <p>
+        Aqui Estão os termos e a descrição sobre como funciona
+      </p>
+    </div>
+
+    <button class="btn" id="openTerms" type="button">
+  Ler termos e condições ↗
+    </button>
+
+  </div>
+
+</section>
+
+</main>
+
+<!-- RODAPÉ -->
+
+<footer>
+<div class="wrap foot">
+
+  <div>
+    <a class="brand" href="#inicio">NEO<b>VR</b></a>
+    <div>© 2026 NEOVR — Projeto demonstrativo.</div>
+  </div>
+
+  <div>
+    Neovr
+  </div>
+
+</div>
+</footer>
+
+
+<!-- MODAL DE CONTA NEOVR -->
+
+<div class="modal" id="accountModal">
+  <div class="dialog">
+
+    <button class="close" id="closeAccount" aria-label="Fechar">×</button>
+
+    <h2 id="accountTitle">Entrar na NEOVR</h2>
+    <p id="accountDescription">Acesse sua conta.</p>
+
+    <!-- LOGIN -->
+    <form id="loginForm">
+
+      <div class="formrow">
+        <label for="loginEmail">E-mail</label>
+        <input id="loginEmail" type="email" required placeholder="Seu e-mail">
+      </div>
+
+      <div class="formrow">
+        <label for="loginPassword">Senha</label>
+        <input id="loginPassword" type="password" required placeholder="Sua senha">
+      </div>
+
+      <button class="btn" type="submit">Entrar na conta</button>
+
+      <p>
+        Não tem conta?
+        <a href="#" id="showSignup" style="color:var(--cyan)">Criar conta</a>
+      </p>
+    </form>
+
+    <!-- CADASTRO -->
+    <form id="signupForm" hidden>
+
+      <div class="formrow">
+        <label for="signupName">Nome</label>
+        <input id="signupName" required placeholder="Seu nome">
+      </div>
+
+      <div class="formrow">
+        <label for="signupEmail">E-mail</label>
+        <input id="signupEmail" type="email" required placeholder="Seu e-mail">
+      </div>
+
+      <div class="formrow">
+        <label for="signupPassword">Senha</label>
+        <input id="signupPassword" type="password" minlength="8" required placeholder="Mínimo de 8 caracteres">
+      </div>
+
+      <button class="btn" type="submit">Criar minha conta</button>
+
+      <p>
+        Já tem conta?
+        <a href="#" id="showLogin" style="color:var(--cyan)">Fazer login</a>
+      </p>
+    </form>
+
+     <!-- CONTA LOGADA -->
+    <div id="loggedArea" hidden>
+      <p id="userWelcome"></p>
+
+      <div class="balance">
+        <span>Saldo total</span>
+        <strong id="userBalance">R$ 0,00</strong>
+        <div id="withdrawProgress"></div>
+      </div>
+
+      <p id="buyStatus" class="buystatus"></p>
+
+      <h3 class="subhead">Meus pedidos</h3>
+      <ul id="orderList" class="orders"></ul>
+
+      <button class="btn" id="logoutButton">Sair da conta</button>
+    </div>
+
+    <p id="accountMessage" role="status" aria-live="polite"></p>
+
+  </div>
+</div>
+
+
+<!-- MODAL DE PAGAMENTO PIX -->
+
+<div class="modal" id="payModal">
+  <div class="dialog">
+
+    <button class="close" id="closePay" aria-label="Fechar">×</button>
+
+    <h2>Pagar com Pix</h2>
+    <p id="payPlan"></p>
+
+    <div class="pixbox">
+      <div><span>Valor</span><strong id="payValue"></strong></div>
+      <div><span>Chave Pix (<em id="pixType"></em>)</span><strong id="pixKey"></strong></div>
+      <div><span>Favorecido</span><strong id="pixName"></strong></div>
+      <button class="btn secondary" type="button" id="copyPix">Copiar chave Pix</button>
+    </div>
+
+    <p class="paylock" id="payLock">🔒 Copie a chave Pix e faça o pagamento no seu banco. O envio do comprovante é liberado 25 segundos depois de copiar.</p>
+
+    <form id="payForm">
+      <fieldset id="payFields" disabled>
+        <div class="formrow">
+          <label for="payFile">Comprovante do Pix (imagem ou PDF, até 5 MB)</label>
+          <input id="payFile" type="file" accept="image/png,image/jpeg,image/webp,application/pdf" required>
+        </div>
+
+        <button class="btn" type="submit">Enviar comprovante</button>
+        <p class="legal-small">Seu saldo só é liberado depois que confirmarmos o pagamento no banco.</p>
+      </fieldset>
+    </form>
+
+    <p id="payMessage" role="status" aria-live="polite"></p>
+
+  </div>
+</div>
+
+<!-- MODAL DE REEMBOLSO -->
+
+<div class="modal" id="refundModal">
+  <div class="dialog">
+
+    <button class="close" id="closeRefund" aria-label="Fechar">×</button>
+
+    <h2>Solicitar saque</h2>
+    <p>O saque é realizado em ate 24 horas, sera notificado aqui no site.</p>
+
+    <div class="pixbox">
+      <div><span>Valor a sacar</span><strong id="refundValue">—</strong></div>
+    </div>
+
+<!-- ===== BLOCO DE CONVITES (só aparece quando falta convite) ===== -->
+<div id="refundConvites" hidden style="margin:14px 0; padding:14px; border:1px solid var(--line); border-radius:14px; background:#090e1e;">
+  <p style="margin:0 0 10px; font-size:.8rem; color:var(--muted)">
+    Para sacar você precisa de <strong>3 indicados</strong> com depósito aprovado.
+    Convide seus amigos com o link abaixo:
+  </p>
+
+  <div class="pixbox" style="margin:0 0 12px">
+    <span>Seu link de convite</span>
+    <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center">
+      <strong id="refundReferralLink" style="word-break:break-all;font-size:.78rem;flex:1">—</strong>
+      <button class="btn secondary" type="button" id="copyRefundRef" style="padding:6px 10px;font-size:.72rem">
+        Copiar
+      </button>
+    </div>
+  </div>
+
+  <div class="progress-block" style="margin-top:0">
+    <div class="progress-label">
+      <span>👥 Indicados com depósito aprovado</span>
+      <strong id="convitesCount">0/3</strong>
+    </div>
+    <div class="progress-bar"><div id="convitesBar" style="width:0%"></div></div>
+  </div>
+</div>
+<!-- =============================================================== -->
+
+    <form id="refundForm">
+      <fieldset id="refundFields" disabled>
+        <div class="formrow">
+          <label for="refundKey">Sua chave Pix</label>
+          <input id="refundKey" required minlength="5" maxlength="140"
+                 placeholder="CPF, e-mail, telefone ou chave aleatória">
+        </div>
+
+        <label class="check">
+  <input type="checkbox" id="refundOk" required>
+  Confirmo que a chave Pix está correta.
+</label>
+
+        <button class="btn" type="submit">Confirmar saque</button>
+        <p class="legal-small">O Pix é enviado após análise da nossa equipe.</p>
+      </fieldset>
+    </form>
+
+    <p id="refundMessage" role="status" aria-live="polite"></p>
+
+  </div>
+</div>
+
+<!-- MODAL DE TERMOS E CONDIÇÕES -->
+
+<div class="modal" id="termsModal">
+  <div class="dialog" style="max-width:700px; max-height:85vh; overflow-y:auto;">
+
+    <button class="close" id="closeTerms" aria-label="Fechar">×</button>
+
+    <h2>Termos e condições — NEOVR</h2>
+
+    <p>
+      Ao participar do projeto NEOVR, você declara que leu e compreendeu
+      as condições apresentadas abaixo.
+    </p>
+
+    <h3>1. Sobre o projeto</h3>
+    <p>
+      A NEOVR é um projeto dedicado ao desenvolvimento e à expansão de experiências imersivas por meio da tecnologia de realidade virtual (VR). Sua proposta é proporcionar novas formas de entretenimento, interação e inovação, utilizando equipamentos e soluções tecnológicas que aproximam as pessoas do universo virtual.
+
+O projeto contempla a aquisição, preparação, manutenção e disponibilização de óculos de realidade virtual, controles, sensores e acessórios, permitindo oferecer experiências interativas em diferentes ambientes e ocasiões.
+
+Entre as atividades previstas estão experiências de entretenimento, simulações virtuais, atrações para eventos, ações promocionais, atividades para empresas e estabelecimentos comerciais, além da locação de equipamentos e estrutura para terceiros.
+
+A NEOVR busca construir uma estrutura tecnológica que possa crescer gradualmente, acompanhando a demanda, identificando novas oportunidades e ampliando as possibilidades de utilização da realidade virtual.
+
+O objetivo é tornar a tecnologia VR mais acessível ao público e oferecer experiências diferenciadas, conectando inovação, entretenimento e oportunidades de negócio.
+    </p>
+
+    <h3>2. Compra de saldo</h3>
+    <p>
+      Os valores apresentados nas cotas correspondem à aquisição de créditos por parte do participante, conforme a modalidade escolhida no momento da compra. Após a confirmação do pagamento, o valor adquirido será registrado na conta do usuário e, respeitando o prazo operacional de até 48 horas, receberá o acréscimo previsto na modalidade contratada.
+
+Após a conclusão do processamento e a liberação dos valores, o participante poderá consultar seu saldo e verificar as condições disponíveis para movimentação e eventual solicitação de saque, conforme as regras estabelecidas pelo projeto.
+
+Todas as transações de aquisição de cotas são realizadas exclusivamente por meio de Pix. Para garantir a segurança e a correta identificação dos pagamentos, poderá ser solicitado o envio do respectivo comprovante, que será analisado pela equipe responsável antes da confirmação da operação.
+
+O participante deverá conferir atentamente os valores, os prazos, as condições de liberação dos créditos e as regras de saque antes de concluir qualquer pagamento.
+    </p>
+
+    <h3>3. Liberação dos créditos</h3>
+    <p>
+      A liberação dos créditos ocorre somente após a identificação, conferência e confirmação do pagamento pela equipe responsável. Assim que o participante realizar o pagamento via Pix e encaminhar o comprovante solicitado, a operação passará por um processo de verificação para garantir que os dados e valores informados estejam corretos.
+
+Após a conclusão dessa análise e a confirmação efetiva do recebimento do pagamento, os créditos correspondentes à modalidade adquirida serão registrados na conta do participante. O usuário poderá acompanhar a atualização do saldo diretamente em sua área de acesso.
+
+Caso seja identificada alguma divergência nas informações, inconsistência no comprovante ou dificuldade na identificação da transação, a liberação poderá aguardar esclarecimentos adicionais. O objetivo desse procedimento é garantir maior segurança, transparência e confiabilidade em todas as operações realizadas.
+    </p>
+
+    <h3>4. Intervalo entre compras</h3>
+    <p>
+      Para manter a organização e o controle das operações, cada participante deverá respeitar um intervalo mínimo de 48 horas entre uma compra e outra. Dessa forma, uma nova aquisição ficará disponível somente após o cumprimento desse período, contado a partir da compra anterior, desde que o pagamento já tenha sido devidamente identificado e aprovado pela equipe responsável.
+
+Durante esse intervalo, o sistema poderá apresentar a data e o horário previstos para a liberação da próxima compra, permitindo que o participante acompanhe quando estará autorizado a realizar uma nova operação.
+
+Essa condição tem como finalidade organizar o processamento dos pagamentos, facilitar o acompanhamento das transações e proporcionar maior controle sobre as movimentações realizadas na plataforma.
+
+A liberação de uma nova compra estará sujeita à regularidade da conta e à confirmação da operação anterior.
+    </p>
+
+
+    <h3>5. Atendimento</h3>
+    <p>
+Em caso de dúvidas, solicitações, dificuldades de acesso ou qualquer problema relacionado à conta, pagamentos, créditos, movimentações ou utilização dos serviços disponibilizados pela plataforma, o participante poderá entrar em contato com a equipe responsável por meio dos canais oficiais de atendimento disponibilizados pelo projeto.
+
+A equipe estará disponível para receber solicitações, fornecer orientações, esclarecer dúvidas sobre os procedimentos da plataforma e auxiliar na resolução de eventuais inconsistências identificadas durante as operações.
+
+Para facilitar o atendimento e agilizar a análise de cada solicitação, o participante poderá ser orientado a fornecer informações relacionadas à sua conta, como endereço de e-mail cadastrado, identificação da transação e comprovantes de pagamento, quando necessário.
+
+As solicitações serão analisadas individualmente, respeitando os procedimentos internos e os prazos necessários para cada tipo de atendimento. Sempre que houver necessidade de uma verificação adicional, o participante poderá receber orientações sobre as próximas etapas.
+
+A NEOVR busca manter uma comunicação transparente e acessível, oferecendo suporte para que os participantes possam esclarecer suas dúvidas e obter informações adequadas sobre o funcionamento da plataforma.
+    </p>
+
+    <h3>6. Aceitação</h3>
+    <p>
+      Ao realizar uma compra, o participante declara que teve acesso
+      aos termos e condições e que compreendeu as regras de utilização
+      dos créditos e dos dobra de saldo após 48 horas.
+    </p>
+
+    <button class="btn" id="closeTermsBottom" type="button">
+      Entendi e fechar
+    </button>
+
+  </div>
+</div>
+
+<script
+  src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+<script src="./script.js"></script>
+
+<div class="toast" id="toast" role="status" aria-live="polite" style="max-width:min(92vw,460px);text-align:center"></div>
+</body>
+</html>
